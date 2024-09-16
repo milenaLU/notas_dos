@@ -4,6 +4,11 @@ import React, { useState, useEffect } from 'react'
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Platform } from 'react-native';
 
+import db from '../../credenciales'
+import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, getDoc, setDoc } from 'firebase/firestore';
+// const db = getFirestore(appFirebase)
+
+
 export default function Editarnota(props) {
 
   const initialState = {
@@ -42,6 +47,34 @@ export default function Editarnota(props) {
     setMode(currentDate);
   };
 
+  const handleChangeText = (value, name) => {
+    setEstado({ ...estado, [name]: value });
+  }
+
+  const saveNote = async()=>{
+    try {
+      if(estado.titulo === '' || estado.detalle === ''){
+        Alert.alert('mensaje importante','debes rellenar el campo requerido')
+      }
+      else{
+        const nota = {
+          titulo: estado.titulo,
+          detalle: estado.detalle,
+          fecha:fecha,
+          hora: hora
+        }
+        await addDoc(collection(db, 'notas'),{
+          ...nota
+        })
+        Alert.alert('Exito','guardado con exito')
+        props.navigation.navigate('Notas')
+      }
+    } catch (error) {
+        console.log(error);
+    }
+  }  
+
+
   return (
     <View style={styles.contenedorPadre}>
       <View style={styles.tarjeta}>
@@ -49,8 +82,8 @@ export default function Editarnota(props) {
           <TextInput
             placeholder='Ingresa el titulo'
             style={styles.textoInput}
-          // value={estado.titulo}
-          // onChangeText={(value)=>handleChangeText(value, 'titulo')}
+            value={estado.titulo}
+            onChangeText={(value)=>handleChangeText(value, 'titulo')}
           />
 
           <TextInput
@@ -58,8 +91,8 @@ export default function Editarnota(props) {
             multiline={true}
             numberOfLines={4}
             style={styles.textoInput}
-          // value={estado.detalle}
-          // onChangeText={(value) => handleChangeText(value, 'detalle')}
+           value={estado.detalle}
+           onChangeText={(value) => handleChangeText(value, 'detalle')}
           />
 
           {/* //contenedor de fecha */}
@@ -95,7 +128,7 @@ export default function Editarnota(props) {
           )}
 
           <View>
-            <TouchableOpacity style={styles.botonEnviar} /*onPress={saveNote}*/ >
+            <TouchableOpacity style={styles.botonEnviar} onPress={saveNote} >
               <Text style={styles.textoBtnEnviar}>
                 Gurdar nueva nota
               </Text>

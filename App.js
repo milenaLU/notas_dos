@@ -3,11 +3,11 @@ import { StyleSheet, Text, View } from 'react-native';
 import 'react-native-gesture-handler';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import Home from './src/pantallas/Home';
 import Detallenotas from './src/pantallas/Detallenotas';
 import Editarnota from './src/pantallas/Editarnota';
 import Login from './src/pantallas/Login';
 import Singup from './src/pantallas/Singup';
+import Notas from './src/pantallas/Notas';
 
 export default function App() {
 
@@ -18,14 +18,14 @@ export default function App() {
       <Stack.Navigator>
 
         <Stack.Screen
-          name="Home"
+          name="Notas"
           options={{
-            title: "Home",
+            title: "Notas",
             headerTitleAlign: "center",
             headerStyle: { backgroundColor: "#881874" },
             headerTintColor: "white",
           }}
-          component={Home}
+          component={Notas}
         />
 
         <Stack.Screen

@@ -1,7 +1,7 @@
 import { Text, StyleSheet, View, ScrollView, TouchableOpacity } from 'react-native'
 import React, { useState, useEffect } from 'react'
 
-export default function Home(props) {
+export default function Notas(props) {
 
   return (
     <ScrollView>
