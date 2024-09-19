@@ -1,4 +1,4 @@
-//crear y editar la nota
+//crear la nota
 import { Text, StyleSheet, View, TextInput, TouchableOpacity, Alert } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import DateTimePicker from '@react-native-community/datetimepicker';

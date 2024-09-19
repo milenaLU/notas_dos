@@ -5,9 +5,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Detallenotas from './src/pantallas/Detallenotas';
 import Editarnota from './src/pantallas/Editarnota';
-import Login from './src/pantallas/Login';
-import Singup from './src/pantallas/Singup';
 import Notas from './src/pantallas/Notas';
+import Modificarnota from './src/pantallas/Modificarnota';
 
 export default function App() {
 
@@ -22,41 +21,18 @@ export default function App() {
           options={{
             title: "Notas",
             headerTitleAlign: "center",
-            headerStyle: { backgroundColor: "#881874" },
+            headerStyle: { backgroundColor: "#BBA9BB" },
             headerTintColor: "white",
           }}
           component={Notas}
         />
 
         <Stack.Screen
-          name="Singup"
-          options={{
-            title: "Singup",
-            headerTitleAlign: "center",
-            headerStyle: { backgroundColor: "#881874" },
-            headerTintColor: "white",
-          }}
-          component={Singup}
-        />
-
-        <Stack.Screen
-          name="Login"
-          options={{
-            title: "Login",
-            headerTitleAlign: "center",
-            headerStyle: { backgroundColor: "#881874" },
-            headerTintColor: "white",
-          }}
-          component={Login}
-        />
-
-
-        <Stack.Screen
           name="Detallenotas"
           options={{
-            title: "Detallenotas",
+            title: "Detalle notas",
             headerTitleAlign: "center",
-            headerStyle: { backgroundColor: "#881874" },
+            headerStyle: { backgroundColor: "#BBA9BB" },
             headerTintColor: "white",
           }}
           component={Detallenotas}
@@ -65,12 +41,23 @@ export default function App() {
         <Stack.Screen
           name="Editarnota"
           options={{
-            title: "Editarnota",
+            title: "Editar nota",
             headerTitleAlign: "center",
-            headerStyle: { backgroundColor: "#881874" },
+            headerStyle: { backgroundColor: "#BBA9BB" },
             headerTintColor: "white",
           }}
           component={Editarnota}
+        />
+
+        <Stack.Screen
+          name="Modificarnota"
+          options={{
+            title: "Modificar nota",
+            headerTitleAlign: "center",
+            headerStyle: { backgroundColor: "#BBA9BB" },
+            headerTintColor: "white",
+          }}
+          component={Modificarnota}
         />
 
       </Stack.Navigator>
